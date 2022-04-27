@@ -13,7 +13,7 @@ export const personalColumns = [
   },
   {
     Header: "Avatar",
-    accessor: "avatar",
+    accessor: (data) => <img src={data.avatar} />,
   },
 ];
 
@@ -40,6 +40,6 @@ export const infoColumns = [
   },
   {
     Header: "Made Deadline?",
-    accessor: "madeDadeline",
+    accessor: (data) => data.madeDadeline.toString(),
   },
 ];
