@@ -40,6 +40,6 @@ export const infoColumns = [
   },
   {
     Header: "Made Deadline?",
-    accessor: (data) => data.madeDadeline.toString(),
+    accessor: (data) => (data.madeDadeline ? "Yes" : "No"),
   },
 ];
