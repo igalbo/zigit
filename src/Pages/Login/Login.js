@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext, Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 
 import AuthContext from "../../context/AuthProvider";
@@ -7,6 +8,7 @@ import "./Login.css";
 const LOGIN_URL = "/authenticate";
 
 const Login = () => {
+  let navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
   const emailRef = useRef();
   const errorRef = useRef();
@@ -16,10 +18,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(!!initialToken);
-
-  useEffect(() => {
-    // emailRef.current.focus(); //Focus on first input box
-  }, []);
 
   useEffect(() => {
     setErrorMsg("");
@@ -47,6 +45,7 @@ const Login = () => {
       setEmail("");
       setPassword("");
       setIsLoggedIn(true);
+      navigate("/info");
     } catch (err) {
       if (!err?.response) {
         setErrorMsg("The server did not respond");
@@ -73,6 +72,7 @@ const Login = () => {
       {isLoggedIn ? (
         <div>
           <h1>You are logged in!</h1>
+          <button onClick={() => navigate("/info")}>Go to info page</button>
           <button onClick={handleLogout}>Log out</button>
         </div>
       ) : (
