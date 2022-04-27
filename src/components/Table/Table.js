@@ -5,8 +5,6 @@ import "./Table.css";
 const Table = ({ tableData, dataColumns }) => {
   const data = useMemo(() => tableData, [tableData]);
 
-  console.log("From table:", tableData);
-
   const columns = useMemo(() => dataColumns, [dataColumns]);
 
   const tableInstance = useTable({
@@ -16,6 +14,11 @@ const Table = ({ tableData, dataColumns }) => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
+
+  const rowColor = (score) => {
+    if (score > 90) return "high-score";
+    if (score < 70) return "low-score";
+  };
 
   return (
     <table {...getTableProps()}>
@@ -31,8 +34,12 @@ const Table = ({ tableData, dataColumns }) => {
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
+          console.log(row.cells[2].value);
           return (
-            <tr {...row.getRowProps()}>
+            <tr
+              {...row.getRowProps()}
+              className={rowColor(row.cells[2]?.value)}
+            >
               {row.cells.map((cell) => (
                 <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
               ))}

@@ -13,7 +13,7 @@ export const personalColumns = [
   },
   {
     Header: "Avatar",
-    accessor: (data) => <img src={data.avatar} />,
+    accessor: (data) => <img src={data.avatar} alt="avatar" />,
   },
 ];
 

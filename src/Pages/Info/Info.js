@@ -13,9 +13,6 @@ const Info = () => {
   const { auth } = useContext(AuthContext);
 
   const token = auth.token || localStorage.getItem("token");
-  console.log("FROM INFO PAGE:", token);
-
-  // Add condition if logged out
 
   useEffect(() => {
     const getInfo = async () => {
@@ -27,7 +24,6 @@ const Info = () => {
           },
         });
 
-        console.log(response);
         setTableData(response?.data);
         setIsLoading(false);
       } catch (err) {}
