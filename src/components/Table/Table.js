@@ -2,40 +2,12 @@ import { useMemo } from "react";
 import { useTable } from "react-table";
 import "./Table.css";
 
-const Table = ({ tableData }) => {
+const Table = ({ tableData, dataColumns }) => {
   const data = useMemo(() => tableData, [tableData]);
 
   console.log("From table:", tableData);
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: "ID",
-        accessor: "id",
-      },
-      {
-        Header: "Name:",
-        accessor: "name",
-      },
-      {
-        Header: "Score",
-        accessor: "score",
-      },
-      {
-        Header: "Duration (days)",
-        accessor: "durationInDays",
-      },
-      {
-        Header: "Bugs",
-        accessor: "bugsCount",
-      },
-      {
-        Header: "Made Deadline?",
-        accessor: "madeDadeline",
-      },
-    ],
-    []
-  );
+  const columns = useMemo(() => dataColumns, [dataColumns]);
 
   const tableInstance = useTable({
     columns,
