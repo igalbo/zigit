@@ -34,7 +34,7 @@ const Table = ({ tableData, dataColumns }) => {
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
-          console.log(row.cells[2].value);
+
           return (
             <tr
               {...row.getRowProps()}

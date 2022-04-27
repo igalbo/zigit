@@ -33,9 +33,6 @@ const Login = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log(response?.data[0]);
-      console.log(response?.data[0]?.token);
-
       const token = response?.data[0]?.token;
       const personalDetails = response?.data[0]?.personalDetails;
       localStorage.setItem("token", token);
