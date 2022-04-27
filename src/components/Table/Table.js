@@ -3,10 +3,7 @@ import { useTable } from "react-table";
 import "./Table.css";
 
 const Table = ({ tableData }) => {
-  // const [data, setData] = useState();
   const data = useMemo(() => tableData, [tableData]);
-
-  // useEffect(() => setData(tableData), [tableData]);
 
   console.log("From table:", tableData);
 

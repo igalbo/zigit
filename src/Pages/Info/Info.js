@@ -37,9 +37,9 @@ const Info = () => {
 
   return (
     <Fragment>
-      <h3>Personal Details:</h3>
+      <h3>Personal Details</h3>
       <p>{personalDetails}</p>
-      <h3>Table Data:</h3>
+      <h3>Table Data</h3>
       {isLoading ? <p>Loading...</p> : <Table tableData={tableData} />}
     </Fragment>
   );
